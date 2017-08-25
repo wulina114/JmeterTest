@@ -1,0 +1,47 @@
+<?xml version="1.0"?>  
+  
+<project name="ant-jmeter-test" default="all" basedir=".">  
+    <tstamp>  
+        <format property="time" pattern="yyyyMMddhhmm" />  
+    </tstamp>  
+    <!--本地jmeter目录-->
+    <property name="jmeter.home" value="F:\apache-jmeter-3.0" />  
+    <!--生成jtl格式的结果报告报告的路径-->
+    <property name="jmeter.result.jtl.dir" value="F:\apache-jmeter-3.0\jmeterTest\result\jtl" />  
+    <!--转换成html格式的结果报告路径--> 
+    <property name="jmeter.result.html.dir" value="F:\apache-jmeter-3.0\jmeterTest\result\html" />  
+    <!--生成报告的文件名前缀-->
+    <property name="ReportName" value="TestReport" />  
+	<!--生成报告的文件名全称-->
+    <property name="jmeter.result.jtlName" value="${jmeter.result.jtl.dir}/${ReportName}${time}.jtl" />  
+    <property name="jmeter.result.htmlName" value="${jmeter.result.html.dir}/${ReportName}${time}.html" />  
+    <!--定义任务，一个是test运行脚本，一个是report生成报告-->	
+    <target name="all">  
+        <antcall target="test" />  
+        <antcall target="report" />  
+    </target>  
+    <!--定义test任务-->  
+    <target name="test">  
+        <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" />  
+        <jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.result.jtlName}">  
+            <!--声明要运行脚本的路径，包含的.jmx文件-->
+            <testplans dir="F:\apache-jmeter-3.0\JmeterTest\script" includes="*.jmx" />  
+			<property name="jmeter.save.saveservice.output_format" value="xml"/>
+        </jmeter>  
+    </target>  
+    <!--定义report任务-->      
+    <target name="report"> 
+		<!--测试结果作为生成报告的输入-->
+        <xslt in="${jmeter.result.jtlName}"  
+              out="${jmeter.result.htmlName}"  
+              style="${jmeter.home}/extras/jmeter-results-detail-report_21.xsl" />  
+          
+        <!--上面生成报告时不会将图片也一起拷贝至目标目录，所以需要手动拷贝-->  
+        <copy todir="${jmeter.result.html.dir}">  
+            <fileset dir="${jmeter.home}/extras">  
+                <include name="collapse.png" />  
+                <include name="expand.png" />  
+            </fileset>  
+        </copy>  
+    </target>  
+</project>  
