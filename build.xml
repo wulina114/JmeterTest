@@ -7,9 +7,9 @@
     <!--本地jmeter目录-->
     <property name="jmeter.home" value="F:\apache-jmeter-3.0" />  
     <!--生成jtl格式的结果报告报告的路径-->
-    <property name="jmeter.result.jtl.dir" value="F:\apache-jmeter-3.0\jmeterTest\result\jtl" />  
+    <property name="jmeter.result.jtl.dir" value="D:\Program Files\Jenkins\workspace\result\jtl" />  
     <!--转换成html格式的结果报告路径--> 
-    <property name="jmeter.result.html.dir" value="F:\apache-jmeter-3.0\jmeterTest\result\html" />  
+    <property name="jmeter.result.html.dir" value="D:\Program Files\Jenkins\workspace\result\html" />  
     <!--生成报告的文件名前缀-->
     <property name="ReportName" value="TestReport" />  
 	<!--生成报告的文件名全称-->
