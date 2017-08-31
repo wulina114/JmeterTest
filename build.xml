@@ -25,7 +25,7 @@
         <taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" />  
         <jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.result.jtlName}">  
             <!--声明要运行脚本的路径，包含的.jmx文件-->
-            <testplans dir="C:\Users\renawu\.jenkins\workspace\First Test" includes="*.jmx" />  
+            <testplans dir="D:\Program Files\Jenkins\workspace\First_Test" includes="*.jmx" />  
 			<property name="jmeter.save.saveservice.output_format" value="xml"/>
         </jmeter>  
     </target>  
