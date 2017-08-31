@@ -5,7 +5,7 @@
         <format property="time" pattern="yyyyMMddhhmm" />  
     </tstamp>  
     <!--本地jmeter目录-->
-    <property name="jmeter.home" value="F:\apache-jmeter-3.0" />  
+    <property name="jmeter.home" value="D:\apache-jmeter-3.0" />  
     <!--生成jtl格式的结果报告报告的路径-->
     <property name="jmeter.result.jtl.dir" value="D:\Program Files\Jenkins\workspace\result\jtl" />  
     <!--转换成html格式的结果报告路径--> 
